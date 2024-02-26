@@ -1,0 +1,22 @@
+export const CarouselData = [
+    {
+        image:"https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lpm1j0qh1a5rd3",
+        path:""
+    },
+    {
+        image:"https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lpm1j0qgyh0v1b",
+        path:""
+    },
+    {
+        image:"https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lpm1j0qh2oq7af",
+        path:""
+    },
+    {
+        image:"https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lpm1j0qgvnvz86",
+        path:""
+    },
+    {
+        image:"https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-ls2gb24wag7t2f",
+        path:""
+    },
+]

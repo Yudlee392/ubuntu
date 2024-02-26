@@ -1,5 +1,5 @@
 import React from "react";
-import ACarousel from "../carousel/ACarousel";
+import ACarousel from "../components/carousel/ACarousel";
 const LandingPage = () => {
     return (
         <div>
