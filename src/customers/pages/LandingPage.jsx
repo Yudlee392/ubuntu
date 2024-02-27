@@ -1,10 +1,14 @@
 import React from "react";
 import ACarousel from "../components/carousel/ACarousel";
+import SectionCard from "../components/sectioncard/SectionCard";
+
 const LandingPage = () => {
     return (
         <div>
             <ACarousel/>
-            <div>Other Section</div>
+            <div>
+                <SectionCard/>
+            </div>
         </div>
     );
 }
