@@ -1,5 +1,8 @@
 import React from 'react'
 import SectionCard from '../sectioncard/SectionCard';
+import { Button } from '@mui/material';
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
+import { KeyboardArrowLeft } from '@mui/icons-material';
 
 
 const Sectioncarousel = () => {
@@ -18,6 +21,10 @@ const Sectioncarousel = () => {
         infinite
         responsive={responsive}
         />
+        <Button variant="contained" className="z-50" sx={{position:'absolute', top:"8rem",right:"0rem",
+       transform:"translateX(50%) rotate(90deg)"}} aria-label="next">
+        <KeyboardArrowLeftIcon sx={{transform:"rotate(90deg)"}}/>
+        </Button>
         </div>
         </div>
   );
