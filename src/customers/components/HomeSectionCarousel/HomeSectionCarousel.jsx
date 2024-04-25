@@ -1,12 +1,12 @@
 import React,{ useState } from 'react'
-import SectionCard from '../sectioncard/SectionCard';
+import SectionCard from '../HomeSectionCard/HomeSectionCard';
 import { Button } from '@mui/material';
 import AliceCarousel from 'react-alice-carousel';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import { mens_shirt } from '../../../Data/mens_shirt';
 
 
-const Sectioncarousel = () => {
+const HomeSectionCarousel = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const responsive = {
         0: { items: 1 },
@@ -18,10 +18,10 @@ const Sectioncarousel = () => {
     const slideNext = () => setActiveIndex(activeIndex + 1);
 
     const syncActiveIndex = ({ item }) => setActiveIndex(item);
-    const items = mens_shirt.slice(0,10).map((item) => <SectionCard product = {items}/>)
+    const items = mens_shirt.slice(0,10).map((item) => <SectionCard product = {item}/>)
   return (
     <div className='border'>
-      <div className='relative p-5'>
+      <div className='relative p-5'>  
         <AliceCarousel
           items={items}
           disableButtonsControls
@@ -31,7 +31,8 @@ const Sectioncarousel = () => {
           onSlideChanged={syncActiveIndex}
           activeIndex={activeIndex}
         />
-        {activeIndex !== items.length - 5 && <Button variant="contained" 
+        {activeIndex !== items.length - 5 && 
+        <Button variant="contained" 
           className="z-50 bg-white" 
           onClick={slideNext}
           sx={{
@@ -42,9 +43,22 @@ const Sectioncarousel = () => {
             bgcolor: "white",
             }}
             aria-label="next">
-          <KeyboardArrowLeftIcon sx={{transform:"rotate(90deg)"}}/>
+          <KeyboardArrowLeftIcon sx={{transform:"rotate(-90deg)", bgcolor:"black"}}/>
         </Button>
         }
+        <Button variant="contained"
+          onClick={slidePrev}
+          className='z-50 bg-white'
+          sx={{
+            position:'absolute',
+            top:"8rem",
+            left:"0rem",
+            transform:"translateX(-50%) rotate(90deg)",
+            bgcolor: "white",
+            }}
+            aria-label="next">
+          <KeyboardArrowLeftIcon sx={{transform:"rotate(-90deg)", bgcolor:"black"}}/>
+        </Button>
       </div>
     </div>
         
@@ -52,4 +66,4 @@ const Sectioncarousel = () => {
 };
 
 
-export default Sectioncarousel
+export default HomeSectionCarousel

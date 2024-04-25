@@ -1,4 +1,4 @@
-export const CarouselData = [
+export const mainCarouselData = [
     {
         image:"https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lpm1j0qh1a5rd3",
         path:""

@@ -1,11 +1,12 @@
 import React from 'react';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import { CarouselData } from './CarouselData';
+import { mainCarouselData } from './MainCarouselData';
 
 
-const ACarousel = () => {
-    const items = CarouselData.map((item) =><img className='pointer-cursor' role='present' src={item.image} alt=""/>);
+const MainCarousel = () => {
+    const items = mainCarouselData.map((item) =><img className='cursor-pointer -z-10' 
+    role='presentation' src={item.image} alt=""/>);
 
     return (
         <AliceCarousel
@@ -17,4 +18,4 @@ const ACarousel = () => {
         />
     )
 }
-export default ACarousel;
+export default MainCarousel;

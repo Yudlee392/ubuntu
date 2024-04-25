@@ -1,8 +1,8 @@
 import React from "react"
 
-const SectionCard = ({product}) => {
+const HomeSectionCard = ({product}) => {
     return (
-        <div className='pointer-cursor flex flex-col items-center bg-white rounded-lg shadow-lg overflow-hidden w-[-15rem] mx-3'>
+        <div className='cursor-pointer flex flex-col items-center bg-white rounded-lg shadow-lg overflow-hidden w-[-15rem] mx-3'>
             <div className='h-[13rem] w-[10rem]'>
                 <img className='object-cover object-top w-full h-full' 
                 src={product.imageUrl}
@@ -18,4 +18,4 @@ const SectionCard = ({product}) => {
         </div>
     );
 }
-export default SectionCard;
+export default HomeSectionCard;
