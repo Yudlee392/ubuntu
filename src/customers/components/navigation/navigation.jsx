@@ -215,7 +215,7 @@ export default function Navigation() {
                       href="/"
                       className="-m-2 block p-2 font-medium text-gray-900"
                     >
-                      Sign in
+                      Register
                     </a>
                   </div>
                   <div className="flow-root">
@@ -482,7 +482,7 @@ export default function Navigation() {
                       onClick={handleOpen}
                       className="text-sm font-medium text-gray-700 hover:text-gray-800"
                     >
-                      Sign in
+                      Register
                     </Button>
                   )}
                 </div>
