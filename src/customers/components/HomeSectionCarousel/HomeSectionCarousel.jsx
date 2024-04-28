@@ -3,7 +3,7 @@ import SectionCard from '../HomeSectionCard/HomeSectionCard';
 import { Button } from '@mui/material';
 import AliceCarousel from 'react-alice-carousel';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
-import { mens_shirt } from '../../../Data/mens_shirt';
+import { mens_kurta } from '../../../Data/mens_kurta';
 
 
 const HomeSectionCarousel = () => {
@@ -18,7 +18,7 @@ const HomeSectionCarousel = () => {
     const slideNext = () => setActiveIndex(activeIndex + 1);
 
     const syncActiveIndex = ({ item }) => setActiveIndex(item);
-    const items = mens_shirt.slice(0,10).map((item) => <SectionCard product = {item}/>)
+    const items = mens_kurta.slice(0,10).map((item) => <SectionCard product = {item}/>)
   return (
     <div className='border'>
       <div className='relative p-5'>  

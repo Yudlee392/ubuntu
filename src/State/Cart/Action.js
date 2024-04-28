@@ -1,5 +1,8 @@
 import { api } from "../../config/apiConfig";
 import {
+  GET_CART_FAILURE,
+  GET_CART_REQUEST,
+  GET_CART_SUCCESS,
   ADD_ITEM_TO_CART_FAILURE,
   ADD_ITEM_TO_CART_REQUEST,
   ADD_ITEM_TO_CART_SUCCESS,
@@ -11,7 +14,7 @@ import {
   UPDATE_CART_ITEM_SUCCESS,
 } from "./ActionType";
 
-export const get = () => async (dispatch) => {
+export const getCart = () => async (dispatch) => {
   dispatch({ type: GET_CART_REQUEST });
   try {
     const { data } = await api.get("/api/cart");
@@ -24,7 +27,7 @@ export const get = () => async (dispatch) => {
 export const addItemToCart = (reqData) => async (dispatch) => {
   dispatch({ type: ADD_ITEM_TO_CART_REQUEST });
   try {
-    const { data } = await api.put("/api/cart/add", reqData.data);
+    const { data } = await api.put("/api/cart/add", reqData);
     dispatch({ type: ADD_ITEM_TO_CART_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: ADD_ITEM_TO_CART_FAILURE, payload: error });

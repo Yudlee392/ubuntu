@@ -1,4 +1,4 @@
-export const mens_shirt = [
+export const mens_kurta= [
     {
         "ImageUrl": "https://i5.walmartimages.com/asr/71721447-1260-4ed7-a352-ff86558411a5_1.b621673c9d6c12481c111d5d10169c97.jpeg",
         "brand": "Nike",

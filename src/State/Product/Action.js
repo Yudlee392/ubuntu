@@ -33,7 +33,7 @@ export const findProductsById = (reqData) => async (dispatch) => {
     productId
   } = reqData;
   try {
-    const { data } = api.get(
+    const { data } = await api.get(
       `/api/products/id${productId}`
     )
     dispatch({type: FIND_PRODUCT_BY_ID_SUCCESS, payload: data})
