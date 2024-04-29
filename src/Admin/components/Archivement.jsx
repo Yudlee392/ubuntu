@@ -1,0 +1,43 @@
+import { Button, Card, CardContent, Typography, styled } from '@mui/material'
+import React from 'react'
+
+const TriangleImg = styled('img')({
+    right: 0,
+    bottom: 0,
+    height: 170,
+    position: 'absolute',
+
+})
+
+const TrophyImg = styled('img')({
+    right:36,
+    bottom:20,
+    height:98,
+    position:'absolute'
+
+})
+
+const Archivement = () => {
+  return (
+    <Card className='' sx={{position:"relative",bgcolor:"Gray",color:"white"}}>
+        <CardContent>
+            <Typography variant='h6' sx={{letterSpacing:".25px"}}>
+                Dyland Shop
+            </Typography>
+            <Typography variant='body2'>
+                Congratulations 🎉
+            </Typography>
+            <Typography variant='h5' sx={{my:3.1}}>
+                500k
+            </Typography>
+            <Button size="small" variant='contained'>
+                View Sales
+            </Button>
+            <TriangleImg src=''></TriangleImg>
+            <TrophyImg src='https://th.bing.com/th/id/OIP.M8L_1huolyIj0KQuK9Sp3wHaKp?rs=1&pid=ImgDetMain'></TrophyImg>
+        </CardContent>
+    </Card>
+  )
+}
+
+export default Archivement

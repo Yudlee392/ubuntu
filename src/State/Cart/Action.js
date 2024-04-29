@@ -33,7 +33,7 @@ export const addItemToCart = (reqData) => async (dispatch) => {
     dispatch({ type: ADD_ITEM_TO_CART_FAILURE, payload: error });
   }
 };
-export const removeItemToCart = (reqData) => async (dispatch) => {
+export const removeCartItem = (reqData) => async (dispatch) => {
   dispatch({ type: REMOVE_CART_ITEM_REQUEST });
   try {
     const { data } = await api.delete(`/api/cart_items/${reqData.cartItemId}`);
@@ -42,7 +42,7 @@ export const removeItemToCart = (reqData) => async (dispatch) => {
     dispatch({ type: REMOVE_CART_ITEM_FAILURE, payload: error });
   }
 };
-export const updateItemToCart = (reqData) => async (dispatch) => {
+export const updateCartItem = (reqData) => async (dispatch) => {
   dispatch({ type: UPDATE_CART_ITEM_REQUEST });
   try {
     const { data } = await api.put(

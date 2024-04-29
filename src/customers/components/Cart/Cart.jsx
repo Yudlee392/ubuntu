@@ -12,7 +12,6 @@ const Cart = () => {
     const handleCheckout = () => {
         navigate("/checkout?step=2");
     }
-
     useEffect(() => {
       dispatch(getCart());
     },[])

@@ -23,7 +23,7 @@ const CustomerRouters = () => {
             <Route path='/cart' element={<Cart/>}></Route>
             <Route path='/:levelOne/:levelTwo/:levelThree' element={<Product/>}></Route>
             <Route path='/product/:productId' element={<ProductDetail/>}></Route>
-            <Route path='/Checkout' element={<Checkout/>}></Route>
+            <Route path='/checkout' element={<Checkout/>}></Route>
             <Route path='/account/order' element={<Order/>}></Route>
             <Route path='/account/order/:orderId' element={<OrderDetails/>}></Route>
 

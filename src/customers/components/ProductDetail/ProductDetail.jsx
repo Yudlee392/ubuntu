@@ -71,6 +71,8 @@ export default function ProductDetail() {
   const dispatch = useDispatch();
   const {products} = useSelector(store=>store);
 
+  console.log("----- ",params.productId)
+
   const handleAddToCart = () => {
     const data ={productId:params.productId,size:selectedSize.name}
     dispatch(addItemToCart(data))
@@ -164,7 +166,7 @@ export default function ProductDetail() {
               <div className="flex space-x-5 items-center text-lg lg:text-xl text-gray-900 mt-6">
                 <p className="font-semibold">{products.product?.discountedPrice}</p>
                 <p className="opacity-50 line-through">{products.product?.price}</p>
-                <p className="text-green-600 font-semibold">{products.product?.discountPersent}% Off</p>
+                <p className="text-green-600 font-semibold">{products.product?.discountedPersent}% Off</p>
               </div>
 
               {/* Reviews */}
