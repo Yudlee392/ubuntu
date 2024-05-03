@@ -1,16 +1,31 @@
-import express from 'express'
-const router = express.Router()
-import {authUser, registerUser, getUserProfile, updateUserProfile,getUsers, deleteUser, getUserByID, updateUser } from '../controlers/userControler.js'
-import {admin, protect} from '../middleware/authMiddleware.js'
+import express from "express";
+const router = express.Router();
+import {
+  authUser,
+  registerUser,
+  getUserProfile,
+  updateUserProfile,
+  getUsers,
+  deleteUser,
+  getUserById,
+  updateUser,
+} from "../controllers/userController.js";
+import { protect, admin } from "../middleware/authMiddleware.js";
+import { userValidationRules, validate } from "../utils/validator.js";
 
+router
+  .route("/")
+  .post(userValidationRules(), validate, registerUser)
+  .get(protect, admin, getUsers);
+router.post("/login", userValidationRules(), validate, authUser);
+router
+  .route("/profile")
+  .get(protect, getUserProfile)
+  .put(protect, updateUserProfile);
+router
+  .route("/:id")
+  .delete(protect, admin, deleteUser)
+  .get(protect, admin, getUserById)
+  .put(protect, admin, updateUser);
 
-router.route('/').post(registerUser).get(protect,admin,getUsers)
-
-router.post('/login', authUser)
-
-router.route('/profile').get(protect, getUserProfile).put(protect, updateUserProfile )
-
-router.route('/:id').delete(protect,admin,deleteUser).get(protect,admin,getUserByID).put(protect,admin,updateUser)
-
-
-export default router
+export default router;
