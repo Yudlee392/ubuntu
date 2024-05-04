@@ -35,7 +35,15 @@ const upload = multer({
 })
 
 router.post('/', upload.single('image'), (req, res) => {
+  console.log('Upload route hit');
+  console.log('req.file:', req.file); 
+  console.log('req.body:', req.body);
   res.send(`/${req.file.path}`)
+}, (error, req, res, next) => {
+  if (error) {
+    console.error('Error in upload route:', error);
+      res.status(500).send(error.message);
+  }
 })
 
 export default router

@@ -64,6 +64,9 @@ const ProductEditScreen = ({ match, history }) => {
           "Content-Type": "multipart/form-data",
         },
       };
+      console.log('File:', file); // Log the selected file object
+      console.log('FormData:', formData); // Log the FormData contents
+
 
       const { data } = await axios.post("/api/upload", formData, config);
 
