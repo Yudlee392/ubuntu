@@ -114,7 +114,7 @@ const ProductListScreen = ({ history, match }) => {
                   <td>
                     <LinkContainer to={`/admin/product/${product._id}/edit`}>
                       <Button variant='light' className='btn-sm'>
-                        <i className='fas fa-edit'></i>
+                        <i className='fas fa-edit'>Edit</i>
                       </Button>
                     </LinkContainer>
                     <Button
@@ -122,7 +122,7 @@ const ProductListScreen = ({ history, match }) => {
                       className='btn-sm'
                       onClick={() => deleteHandler(product._id)}
                     >
-                      <i className='fas fa-trash'></i>
+                      <i className='fas fa-trash'>Delete</i>
                     </Button>
                   </td>
                 </tr>
