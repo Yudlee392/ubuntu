@@ -33,6 +33,7 @@ const PlaceOrderScreen = ({ history }) => {
   useEffect(() => {
     if (success) {
       history.push(`/order/${order._id}`)
+      window.location.reload();
     }
     // eslint-disable-next-line
   }, [history, success])
@@ -49,6 +50,7 @@ const PlaceOrderScreen = ({ history }) => {
         totalPrice: cart.totalPrice,
       })
     )
+    
   }
 
   return (
@@ -144,6 +146,7 @@ const PlaceOrderScreen = ({ history }) => {
                   type='button'
                   className='btn-block'
                   disabled={cart.cartItems === 0}
+                  
                   onClick={placeOrderHandler}
                 >
                   Place Order
