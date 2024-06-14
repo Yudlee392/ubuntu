@@ -29,7 +29,7 @@ const App = () => {
       .then(response => response.json())
       .then(data => setData(data))
       .catch(error => console.error('Error fetching data:', error));
-  }, []);
+  }, [setData]);
   return (
     <Router>
       <Header />
