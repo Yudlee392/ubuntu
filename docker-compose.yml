@@ -33,9 +33,21 @@ services:
       - mongodb_data:/data/db
     networks:
       - my-network
+  jenkins:
+    build:
+      context: ./jenkins_home
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      JAVA_OPTS: "-Dhudson.plugins.git.GitSCM.ALLOW_LOCAL_CHECKOUT=true"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    networks:
+      - my-network
 networks:
   my-network:
     driver: bridge
 volumes:
   mongodb_data:
-
+  jenkins_home:
