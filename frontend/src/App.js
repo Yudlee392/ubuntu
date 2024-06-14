@@ -21,13 +21,12 @@ import OrderListScreen from "./screens/OrderListScreen";
 
 
 const App = () => {
-  const [data, setData] = useState(null);
+  const [setData] = useState(null);
   useEffect(() => {
     const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
     fetch(`${backendUrl}/api/some-endpoint`)
       .then(response => response.json())
-	// eslint-disable-next-line
       .then(data => setData(data))
       .catch(error => console.error('Error fetching data:', error));
   }, []);
