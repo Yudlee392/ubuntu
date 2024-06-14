@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Header from "./components/Header";
@@ -21,6 +21,16 @@ import OrderListScreen from "./screens/OrderListScreen";
 
 
 const App = () => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
+    fetch(`${backendUrl}/api/some-endpoint`)
+      .then(response => response.json())
+      .then(data => setData(data))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
   return (
     <Router>
       <Header />
@@ -62,7 +72,7 @@ const App = () => {
       <Footer />
     </Router>
   );
-}
+};
 
 
 
