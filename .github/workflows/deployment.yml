@@ -31,7 +31,8 @@ jobs:
         cd /home/duyle/run/_work/ubuntu/ubuntu/backend
         rm -rf node_modules
         npm install
-        cd ~/ && zip -r run.zip run/ && cp run.zip ~/
+        cd /home/duyle/run/_work/ubuntu/ubuntu/
+        zip -r run.zip run/ && mv run.zip ~/
     - uses: ncipollo/release-action@v1
       with:
         artifacts: "/home/duyle/run.zip"
