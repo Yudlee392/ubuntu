@@ -41,9 +41,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Download Artifact
-      run: |
-        mv ~/run.zip /home/duyle/
-        unzip run.zip -d ./test
+      uses: actions/download-artifact@v3
+      with: 
+        name: run-artifact
+        path: ./run
     - name: Deploy to Server
       run: |
         unzip run.zip
