@@ -17,7 +17,7 @@ jobs:
         node-version: [16.x]
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Build Artifact
       run: |
         cd ${{ github.workspace }}/frontend
@@ -44,7 +44,7 @@ jobs:
     needs: build
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Download Artifact
       uses: actions/download-artifact@v3
       with: 
