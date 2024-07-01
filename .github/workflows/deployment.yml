@@ -45,26 +45,24 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
     - name: Download Artifact
       uses: actions/download-artifact@v3
       with: 
         name: RUN
-    - name: Give permissions to zip
-      run: chmod +rwx run.zip
+    - name: List files before unzip
+      run: ls -la 
+    - name: List files in zip
+      run: unzip -l RUN/run.zip
     - name: Deploy to Server
       run: |
-        unzip run.zip
+        unzip RUN/run.zip
         docker-compose config
         docker ps
         docker-compose logs -f
         docker-compose up -d
     - uses: ncipollo/release-action@v1
       with:
-        artifacts: "./run/run.zip"
+        artifacts: "./RUN/run.zip"
         body: "Release new Build"
         tag: release-v0.0.${{ github.run_number }}
         token: ${{ secrets.MY_GITHUB_TOKEN }}
