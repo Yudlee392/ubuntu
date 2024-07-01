@@ -27,7 +27,7 @@ jobs:
         cd ${{ github.workspace }}/backend
         rm -rf node_modules
         npm install
-        cd cd ${{ github.workspace }}
+        cd ${{ github.workspace }}
         zip -r run.zip . -i run/
 
   deploy:
