@@ -24,14 +24,14 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Build Artifact
       run: |
-        cd ./frontend
+        cd /home/duyle/run/_work/ubuntu/ubuntu
+        cd frontend
         rm -rf node_modules
         npm install
         npm run build
         cd ./backend
         rm -rf node_modules
         npm install
-        npm run build
         cd ~/ && zip -r run.zip run/ && cp run.zip ~/
     - uses: ncipollo/release-action@v1
       with:
