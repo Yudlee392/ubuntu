@@ -1,11 +1,11 @@
-name: Deploy CICD
+name: CICD Pipeline
 on:
   push:
     branches:
       - main
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-lastest
     name: DEPLOY CICD
     services:
       mongo:
@@ -18,10 +18,6 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
     - name: Build Artifact
       run: |
         cd /home/duyle/run/_work/ubuntu/ubuntu/frontend
@@ -33,12 +29,30 @@ jobs:
         npm install
         cd /home/duyle/run/_work/ubuntu/ubuntu/
         zip -r run.zip . -i run/ && mv run.zip ~/
+
+deploy:
+    runs-on: [self-hosted, linux]
+    needs: build
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Download Artifact
+      run: |
+        mv ~/run.zip /home/duyle/
+        unzip run.zip -d ./test
+    - name: Deploy to Server
+      run: |
+        docker-compose up -d
     - uses: ncipollo/release-action@v1
       with:
         artifacts: "/home/duyle/run.zip"
         body: "Release new Build"
         tag: release-v0.0.1
         token: ${{ secrets.MY_GITHUB_TOKEN }}
-        replacesArtifacts: true
+        replacesArtifacts: false
         allowUpdates: true
         prerelease: true
