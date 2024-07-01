@@ -37,7 +37,7 @@ jobs:
       with:
         artifacts: "/home/duyle/run.zip"
         body: "Release new Build"
-        tag: release v0.0.1
+        tag: release-v0.0.1
         token: ${{ secrets.MY_GITHUB_TOKEN }}
         replacesArtifacts: true
         allowUpdates: true
