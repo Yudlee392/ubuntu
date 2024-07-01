@@ -52,10 +52,11 @@ jobs:
     - name: List files before unzip
       run: ls -la 
     - name: List files in zip
-      run: unzip -l RUN/run.zip
+      run: unzip -l run.zip
     - name: Deploy to Server
       run: |
-        unzip RUN/run.zip
+        rm -rf *
+        unzip run.zip
         docker-compose config
         docker ps
         docker-compose logs -f
