@@ -53,6 +53,8 @@ jobs:
       uses: actions/download-artifact@v3
       with: 
         name: RUN
+    - name: Give permissions to zip
+      run: chmod +rwx run.zip
     - name: Deploy to Server
       run: |
         unzip run.zip
