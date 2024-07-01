@@ -56,6 +56,9 @@ jobs:
     - name: Deploy to Server
       run: |
         unzip run.zip
+        docker-compose config
+        docker ps
+        docker-compose logs -f
         docker-compose up -d
     - uses: ncipollo/release-action@v1
       with:
