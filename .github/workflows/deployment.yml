@@ -5,7 +5,7 @@ on:
       - main
 jobs:
   build:
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
     name: DEPLOY CICD
     services:
       mongo:
@@ -20,15 +20,15 @@ jobs:
       uses: actions/checkout@v2
     - name: Build Artifact
       run: |
-        cd /home/duyle/run/_work/ubuntu/ubuntu/frontend
+        cd ${{ github.workspace }}/frontend
         rm -rf node_modules
         npm install
         npm run build
-        cd /home/duyle/run/_work/ubuntu/ubuntu/backend
+        cd ${{ github.workspace }}/backend
         rm -rf node_modules
         npm install
-        cd /home/duyle/run/_work/ubuntu/ubuntu/
-        zip -r run.zip . -i run/ && mv run.zip ~/
+        cd cd ${{ github.workspace }}
+        zip -r run.zip . -i run/
 
   deploy:
     runs-on: [self-hosted, linux]
@@ -46,12 +46,13 @@ jobs:
         unzip run.zip -d ./test
     - name: Deploy to Server
       run: |
+        unzip run.zip
         docker-compose up -d
     - uses: ncipollo/release-action@v1
       with:
-        artifacts: "/home/duyle/run.zip"
+        artifacts: "./run/run.zip"
         body: "Release new Build"
-        tag: release-v0.0.1
+        tag: release-v0.0.${{ github.run_number }}
         token: ${{ secrets.MY_GITHUB_TOKEN }}
         replacesArtifacts: false
         allowUpdates: true
