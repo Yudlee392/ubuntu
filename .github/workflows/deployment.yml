@@ -38,6 +38,6 @@ jobs:
         body: "Release new Build"
         tag: release v0.0.1
         token: ${{ secrets.MY_GITHUB_TOKEN }}
-        replacesArtifacts: false
+        replacesArtifacts: true
         allowUpdates: true
         prerelease: true
