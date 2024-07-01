@@ -55,6 +55,7 @@ jobs:
       run: unzip -l run.zip
     - name: Deploy to Server
       run: |
+        docker-compose down -v
         docker-compose config
         docker ps
         docker-compose logs -f
