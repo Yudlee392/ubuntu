@@ -32,7 +32,7 @@ jobs:
         rm -rf node_modules
         npm install
         cd /home/duyle/run/_work/ubuntu/ubuntu/
-        zip -r run.zip run/ && mv run.zip ~/
+        zip -r run.zip . -i run/ && mv run.zip ~/
     - uses: ncipollo/release-action@v1
       with:
         artifacts: "/home/duyle/run.zip"
