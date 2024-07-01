@@ -6,6 +6,7 @@ on:
 jobs:
   build:
     runs-on: self-hosted
+    name: DEPLOY CICD
     services:
       mongo:
         image: mongo:4.4.6
@@ -15,31 +16,28 @@ jobs:
       matrix:
         node-version: [20.x]
     steps:
-    - name: Clear old session docker
-      run: docker-compose down -v
     - name: Checkout repository
       uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Install backend dependencies
-      working-directory: ./backend
-      run: npm install
-    - name: Install frontend dependencies
-      working-directory: ./frontend
-      run: npm install
-    - name: Build frontend
-      working-directory: ./frontend
-      run: npm run build
-    - name: Monitoring with pm2
-      run: pm2 restart run
-    - name: Deploy to Docker
-      env:
-        DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
-        DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+    - name: Build Artifact
       run: |
-        docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_ACCESS_TOKEN
-        docker-compose -f ./docker-compose.yml build
-        docker-compose -f ./docker-compose push
-   
+        cd ./frontend
+        rm -rf node_modules
+        npm install
+        npm run build
+        cd ./backend
+        rm -rf node_modules
+        npm install
+        npm run build
+        cd ~/ && zip -r run.zip run/ && cp run.zip ~/
+    - uses: ncipollo/release-action@v1
+      with:
+        artifacts: "/home/duyle/run.zip"
+        body: "Release new Build"
+        token: ${{ secrets.GITHUB_TOKEN }}
+        replacesArtifacts: false
+        allowUpdates: true
+        prerelease: true
