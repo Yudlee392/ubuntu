@@ -64,7 +64,7 @@ jobs:
         docker-compose up -d
     - uses: ncipollo/release-action@v1
       with:
-        artifacts: "./run-v${{ github.run_number }}.zip"
+        artifacts: "RUN/run-v${{ github.run_number }}.zip"
         body: "Release new Build"
         tag: release-v0.0.${{ github.run_number }}
         token: ${{ secrets.MY_GITHUB_TOKEN }}
