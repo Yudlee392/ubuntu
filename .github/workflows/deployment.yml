@@ -22,7 +22,9 @@ jobs:
       run: |
         cd ${{ github.workspace }}/frontend
         rm -rf node_modules
+        npm install
         npm run build
+        rm -rf node_modules
         cd ${{ github.workspace }}/backend
         rm -rf node_modules
         cd ${{ github.workspace }}
