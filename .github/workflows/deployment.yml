@@ -24,12 +24,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Build Artifact
       run: |
-        cd /home/duyle/run/_work/ubuntu/ubuntu
-        cd frontend
+        cd /home/duyle/run/_work/ubuntu/ubuntu/frontend
         rm -rf node_modules
         npm install
         npm run build
-        cd ./backend
+        cd cd /home/duyle/run/_work/ubuntu/ubuntu/backend
         rm -rf node_modules
         npm install
         cd ~/ && zip -r run.zip run/ && cp run.zip ~/
