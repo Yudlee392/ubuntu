@@ -28,13 +28,17 @@ jobs:
         rm -rf node_modules
         npm install
         cd ${{ github.workspace }}
-        zip -r run.zip . -i run/
+        zip -r run.zip . 
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
         name: RUN
         path: run.zip
         retention-days: 7
+    - name: Verify uploaded artifact
+      run: |
+        echo "Artifact contents:"
+        ls -la ${{ github.workspace }}/run.zip    
   deploy:
     runs-on: [self-hosted, linux]
     needs: build
