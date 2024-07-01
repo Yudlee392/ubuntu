@@ -29,7 +29,12 @@ jobs:
         npm install
         cd ${{ github.workspace }}
         zip -r run.zip . -i run/
-
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: RUN
+        path: run.zip
+        retention-days: 7
   deploy:
     runs-on: [self-hosted, linux]
     needs: build
@@ -43,8 +48,7 @@ jobs:
     - name: Download Artifact
       uses: actions/download-artifact@v3
       with: 
-        name: run-artifact
-        path: ./run
+        name: RUN
     - name: Deploy to Server
       run: |
         unzip run.zip
