@@ -14,7 +14,7 @@ jobs:
           - 27017:27017
     strategy:
       matrix:
-        node-version: [20.x]
+        node-version: [12.x,16.x,20.x]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -64,7 +64,7 @@ jobs:
         docker-compose up -d
     - uses: ncipollo/release-action@v1
       with:
-        artifacts: "./run.zip"
+        artifacts: "./run-v${{ github.run_number }}.zip"
         body: "Release new Build"
         tag: release-v0.0.${{ github.run_number }}
         token: ${{ secrets.MY_GITHUB_TOKEN }}
