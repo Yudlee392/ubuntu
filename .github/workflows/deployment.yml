@@ -62,7 +62,7 @@ jobs:
         docker ps
         docker-compose logs -f
         docker-compose up -d
-    - uses: ncipollo/release-action@v2
+    - uses: ncipollo/release-action@v1
       with:
         artifacts: "./RUN/run-v${{ github.run_number }}.zip"
         body: "Release new Build"
